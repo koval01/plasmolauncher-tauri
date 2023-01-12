@@ -1,0 +1,105 @@
+{
+  "build": {
+    "beforeBuildCommand": "npm run build",
+    "beforeDevCommand": "npm run dev",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist"
+  },
+  "package": {
+    "productName": "ZalupaLauncher",
+    "version": "1.0.5"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": true,
+      "window": {
+        "all": true
+      },
+      "fs": {
+        "readFile": true,
+        "scope": [
+          "$APPDATA/**/*",
+          "$RESOURCE/**/*",
+          "$APPCONFIG/**/*"
+        ]
+      },
+      "shell": {
+        "open": ".*"
+      },
+      "dialog": {
+        "all": true
+      },
+      "clipboard": {
+        "readText": true,
+        "writeText": true
+      },
+      "protocol": {
+        "asset": true,
+        "assetScope": [
+          "$APPDATA/**/*",
+          "$RESOURCE/**/*",
+          "$APPCONFIG/**/*"
+        ]
+      },
+      "path": {
+        "all": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "category": "Game",
+      "copyright": "Plasmo",
+      "externalBin": [],
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "identifier": "ZalupaLauncher",
+      "longDescription": "Minecraft Launcher",
+      "resources": [
+        "resources/**/*"
+      ],
+      "shortDescription": "Minecraft Launcher",
+      "targets": "all",
+      "deb": {
+        "depends": []
+      },
+      "macOS": {
+        "exceptionDomain": "",
+        "frameworks": []
+      },
+      "windows": {
+        "digestAlgorithm": "sha256",
+        "timestampUrl": ""
+      }
+    },
+    "security": {
+      "csp": "default-src 'self'; img-src * asset: https://asset.localhost data:; font-src *; style-src * 'unsafe-inline'; script-src 'unsafe-eval';"
+    },
+    "updater": {
+      "active": true,
+      "endpoints": [
+          "https://github.com/Zalupa-Online/launcher-releases/releases/latest/download/latest.json"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEFCQUNDQTA0Q0VBQUE1NEUKUldST3Bhck9CTXFzcStqUDVMa0kzMkdoSDlic0srY0xGaWpDL3RFSU1uOE0rZ0kwVDhmRCtRUjQK"
+    },
+    "windows": [
+      {
+        "label": "settings",
+        "fullscreen": false,
+        "height": 640,
+        "visible": false,
+        "resizable": true,
+        "title": "Настройки",
+        "width": 512,
+        "url": "/settings",
+        "minHeight": 440,
+        "minWidth": 440
+      }
+    ]
+  }
+}

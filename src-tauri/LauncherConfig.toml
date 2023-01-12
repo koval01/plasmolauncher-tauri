@@ -1,0 +1,10 @@
+launcher_name = "ZalupaOnline"
+launcher_version = "69"
+window_title = "Zalupa Launcher"
+
+[minecraft_avatar]
+api_url = "https://rp.plo.su/avatar/"
+query_params = "?w=8"
+
+[metaserver]
+api_url = "https://launcher-meta.zalupa.online/"

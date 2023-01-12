@@ -1,0 +1,82 @@
+[package]
+name = "plasmo_launcher"
+version = "1.0.5"
+description = "A Tauri App"
+authors = ["KPidS"]
+license = ""
+repository = ""
+default-run = "plasmo_launcher"
+edition = "2021"
+rust-version = "1.59"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+tauri-build = { version = "1.2.1", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+tauri = { version = "1.2.1", features = ["api-all", "config-toml", "updater"] }
+tokio = { version = "1.23.0", features = ["full", "fs"] }
+figment = "0.10.8"
+reqwest = { version = "0.11.13", features = ["stream", "json"] }
+url = { version = "2.3.1", features = ["serde"] }
+url2 = "0.0.6"
+thiserror = "1.0.37"
+futures-util = "0.3.25"
+fs_extra = "1.2.0"
+uuid = { version = "1.2.2", features = ["serde"] }
+derive_more = "0.99.17"
+async-trait = "0.1.59"
+typeshare = "1.0.0"
+ts-rs = "6.2.1"
+anyhow = "1.0.68"
+chrono = { version = "0.4.23", features = ["serde"] }
+rayon = "1.6.1"
+sha1 = "0.10.5"
+hex = "0.4.3"
+os-version = "0.2.0"
+regex = "1.7.0"
+futures = "0.3.25"
+glob = "0.3.0"
+tokio-util = "0.7.4"
+toml = "0.5.10"
+log = "0.4.17"
+md5 = "0.7.0"
+dunce = "1.0.3"
+include_path = "0.1.1"
+
+plasmolauncher-common = { git = "https://github.com/plasmoapp/plasmolauncher-common" }
+# tauri-plugin-synced-store = { git = "https://github.com/KPidS/tauri-plugin-synced-store" }
+
+# [dependencies.tauri-plugin-store]
+# git = "https://github.com/tauri-apps/tauri-plugin-store"
+
+[dependencies.tauri-plugin-synced-state]
+git = "https://github.com/KPidS/tauri-plugin-synced-store"
+# path = "/Users/kpids/Documents/Code/tauri-plugin-synced-state"
+# version = "1"
+
+# [dependencies.tauri-plugin-deep-link]
+# git = "https://github.com/FabianLars/tauri-plugin-deep-link"
+
+[target.'cfg(windows)'.dependencies]
+zip = "0.6.3"
+zip-extensions = "0.6.1"
+
+[target.'cfg(unix)'.dependencies]
+flate2 = { version = "1.0.25" }
+tar = "0.4.38"
+
+[dependencies.tauri-plugin-log]
+git = "https://github.com/tauri-apps/plugins-workspace"
+branch = "dev"
+
+[features]
+# by default Tauri runs in production mode
+# when `tauri dev` runs it is executed with `cargo run --no-default-features` if `devPath` is an URL
+default = ["custom-protocol"]
+# this feature is used for production builds where `devPath` points to the filesystem
+# DO NOT remove this
+custom-protocol = ["tauri/custom-protocol"]
